@@ -1,0 +1,46 @@
+<section id="home" style="
+  padding: 20px;
+  animation: fadeIn 1s ease-in;
+  display: flex;
+  flex-direction: column;
+  align-items: center;     /* ← Centers children horizontally */
+  text-align: center;      /* ← Centers inline text */
+  max-width: 1200px;
+  margin: 0 auto;          /* ← Centers the whole block if narrower than viewport */
+">
+<style>
+  * { color: #800000 !important; font-family: Arial; font-size: large; }
+  h1 { font-weight: bold; font-size: xx-large;}
+  h2,h3,h4,h5,h6 { font-weight: bold; font-size: x-large;}
+  .gold, a.button, .gold-link { color: gold !important; }
+</style>
+  <h1>Welcome to Hamilton Tamil Sangam!</h1>
+  <br>
+  <p style="max-width: 800px; line-height: 1.6;">
+    Established in May 2021, our journey began with a small gathering of Tamil-speaking families enjoying outdoor potlucks. As our community flourished, we embraced the growing number of families by organizing get-togethers in cozy small halls. Eventually, our events transitioned to larger community halls to accommodate our vibrant and expanding community. Join us as we celebrate our culture, foster connections, and create lasting memories together.
+  </p>
+  <div style="
+    width: 100%;
+    max-width: 900px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    margin-bottom: 30px;
+    animation: slideUp 0.6s ease-out;
+    transition: transform 0.3s;
+  " onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+    <img 
+      src="../images/diwali_2024.jpg" 
+      alt="Featured Event Photo"
+      style=" 
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+      "
+      onerror="this.src='https://via.placeholder.com/900x500/800000/gold?text=Gallery+Photo'"
+    />
+  </div>
+<style>
+  @keyframes fadeIn { from {opacity:0} to {opacity:1} }
+</style>
