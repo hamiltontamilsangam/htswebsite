@@ -26,7 +26,13 @@
     top: 110px;
     max-height: calc(100vh - 130px);
     overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  .events-nav-menu::-webkit-scrollbar {
+    width: 0;
+    height: 0;
   }
   
   .events-nav-menu h3 {
@@ -91,6 +97,34 @@
     transform: scale(1.02);
     box-shadow: 0 8px 16px rgba(0,0,0,.15);
   }
+
+  .past-events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto 0;
+  }
+
+  .past-event-card {
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    text-align: left;
+  }
+
+  .past-event-card h3 {
+    margin: 0 0 10px;
+    font-size: 1.05rem;
+  }
+
+  .past-event-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
   
   .events-nav-menu::-webkit-scrollbar {
     width: 6px;
@@ -119,13 +153,23 @@
       position: relative;
       top: 0;
       max-height: none;
-      order: -1;
+      order: 2;
+      margin-bottom: 10px;
+    }
+    .events-content {
+      order: 1;
     }
   }
   
   @media (max-width: 768px) {
     #events {
       padding: 15px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .past-events-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>
@@ -171,40 +215,18 @@
         <p style="color: #800000; line-height: 1.6; margin-bottom: 20px; max-width: 700px;">
           Browse through our past events and celebrations. Visit the Gallery page to see photos from these events.
         </p>
-        <div style="
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          gap: 20px;
-          width: 100%;
-          max-width: 800px;
-          margin-top: 20px;
-        ">
-          <div style="
-            padding: 20px;
-            background: #f9f9f9;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-          ">
-            <h3 style="color: #800000; margin-bottom: 10px;">2025 Summer Event</h3>
-            <p style="color: #800000; font-size: 0.9rem; line-height: 1.5;">Community gathering and cultural celebration</p>
+        <div class="past-events-grid">
+          <div class="past-event-card">
+            <h3>2025 Summer Event</h3>
+            <p>Community gathering and cultural celebration</p>
           </div>
-          <div style="
-            padding: 20px;
-            background: #f9f9f9;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-          ">
-            <h3 style="color: #800000; margin-bottom: 10px;">2024 Diwali</h3>
-            <p style="color: #800000; font-size: 0.9rem; line-height: 1.5;">Festival of lights celebration</p>
+          <div class="past-event-card">
+            <h3>2024 Diwali</h3>
+            <p>Festival of lights celebration</p>
           </div>
-          <div style="
-            padding: 20px;
-            background: #f9f9f9;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-          ">
-            <h3 style="color: #800000; margin-bottom: 10px;">2024 Chitrai Tiruvizha</h3>
-            <p style="color: #800000; font-size: 0.9rem; line-height: 1.5;">Tamil New Year celebration</p>
+          <div class="past-event-card">
+            <h3>2024 Chitrai Tiruvizha</h3>
+            <p>Tamil New Year celebration</p>
           </div>
         </div>
       </div>
