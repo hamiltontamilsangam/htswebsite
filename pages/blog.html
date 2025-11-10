@@ -1,33 +1,186 @@
 <section id="blog" style="
-  padding: 20px;
+  padding: 20px 30px;
   animation: fadeIn 1s ease-in;
-  display: flex;
-  flex-direction: column;
-  align-items: center;     /* ← Centers children horizontally */
-  text-align: center;      /* ← Centers inline text */
-  max-width: 1200px;
-  margin: 0 auto;          /* ← Centers the whole block if narrower than viewport */
+  width: 100%;
+  box-sizing: border-box;
 ">
 <style>
-  * { color: #800000 !important; }
-  h1,h2,h3,h4,h5,h6 { font-weight: bold; }
-  .gold, a.button, .gold-link { color: gold !important; }
+  * { color: #800000 !important; font-family: Arial; }
+  @keyframes fadeIn { from {opacity:0} to {opacity:1} }
+  @keyframes slideUp { from {transform:translateY(50px); opacity:0} to {transform:translateY(0); opacity:1} }
+  
+  .blog-container {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 30px;
+    align-items: start;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .posts-menu {
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    position: sticky;
+    top: 110px;
+    max-height: calc(100vh - 130px);
+    overflow-y: auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  .posts-menu h3 {
+    color: #800000;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(128, 0, 0, 0.2);
+  }
+  
+  .post-menu-item {
+    display: block;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    color: #800000;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border-left: 3px solid transparent;
+    font-size: 0.9rem;
+  }
+  
+  .post-menu-item:hover,
+  .post-menu-item.active {
+    background: rgba(128, 0, 0, 0.1);
+    border-left-color: #800000;
+    transform: translateX(5px);
+  }
+  
+  .blog-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .post-content {
+    width: 100%;
+    max-width: 900px;
+  }
+  
+  article {
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+    animation: slideUp .5s ease-out;
+    width: 100%;
+    text-align: left;
+  }
+  
+  article h2 {
+    font-weight: bold;
+    font-size: x-large;
+    margin-bottom: 15px;
+    color: #800000;
+  }
+  
+  article p {
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  
+  .posts-menu::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .posts-menu::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+  }
+  
+  .posts-menu::-webkit-scrollbar-thumb {
+    background: rgba(128, 0, 0, 0.3);
+    border-radius: 3px;
+  }
+  
+  .posts-menu::-webkit-scrollbar-thumb:hover {
+    background: rgba(128, 0, 0, 0.5);
+  }
+  
+  @media (max-width: 1024px) {
+    .blog-container {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .posts-menu {
+      position: relative;
+      top: 0;
+      max-height: none;
+      order: -1;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    #blog {
+      padding: 15px;
+    }
+  }
 </style>
-  <h1>Blog</h1>
-  <article style="padding:15px; border-radius:8px; margin-bottom:20px; box-shadow:0 2px 4px rgba(0,0,0,.1); animation:slideUp .5s ease-out;">
-    <h2>Our Journey So Far</h2>
-    <p>Reflecting on 5 years of growth and community building at HTS.</p>
-    <div class="col-sm-6 col-lg-3">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/PENSbvVx1mo?si=xtUKrFM65q0mcFBS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+  <div class="blog-container">
+    <!-- Left Sidebar - Posts Menu -->
+    <div class="posts-menu">
+      <h3>News & Articles</h3>
+      <a href="#" class="post-menu-item active" onclick="showPost(event, 'post-zev')">Zero Emission Vehicle Support</a>
+      <a href="#" class="post-menu-item" onclick="showPost(event, 'post-hamilton-kids')">Hamilton Kids Society Donation</a>
+      <!-- Add more posts/articles here -->
     </div>
-  </article>
-  <article style="padding:15px; border-radius:8px; margin-bottom:20px; box-shadow:0 2px 4px rgba(0,0,0,.1); animation:slideUp .5s ease-out .2s both;">
-    <h2>Upcoming Cultural Events</h2>
-    <p>A sneak peek into our plans for the next year.</p>
-    <p>Kodai Kondattam 2026</p>
-  </article>
+
+    <!-- Main Blog Content -->
+    <div class="blog-content">
+      <h1 style="font-weight: bold; font-size: xx-large; margin-bottom: 30px; color: #800000;">Community News and Contribution</h1>
+      
+      <!-- Post Content - Zero Emission Vehicle Support (Default/Active) -->
+      <div id="post-zev" class="post-content" style="display: block;">
+        <article>
+          <h2>Zero Emission Vehicle Support</h2>
+          <p>During the year 2023 HTS initiated to support Zero Emission Vehicle Infrastructure program by promoting and creating awareness among the Hamilton Tamil Sangam community.</p>
+          <p>--certificate--</p>
+        </article>
+      </div>
+
+      <!-- Post Content - Hamilton Kids Society Donation -->
+      <div id="post-hamilton-kids" class="post-content" style="display: none;">
+        <article>
+          <h2>Hamilton Kids Society Donation</h2>
+          <p>During the year 2025 HTS supported Hamilton Kids Society donating toys on the occasion of Diwali.</p>
+          <p>--certificate--</p>
+        </article>
+      </div>
+    </div>
+  </div>
 </section>
 
-<style>
-  @keyframes slideUp { from {transform:translateY(50px); opacity:0} to {opacity:1} }
-</style>
+<script>
+  function showPost(event, postId) {
+    event.preventDefault();
+    
+    // Hide all post contents
+    document.querySelectorAll('.post-content').forEach(content => {
+      content.style.display = 'none';
+    });
+    
+    // Remove active class from all menu items
+    document.querySelectorAll('.post-menu-item').forEach(item => {
+      item.classList.remove('active');
+    });
+    
+    // Show selected post content
+    document.getElementById(postId).style.display = 'block';
+    
+    // Add active class to clicked menu item
+    event.target.classList.add('active');
+  }
+</script>

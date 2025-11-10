@@ -1,0 +1,44 @@
+<section id="team" style="
+  padding: 20px;
+  animation: fadeIn 1s ease-in;
+  display: flex;
+  flex-direction: column;
+  align-items: center;     /* ← Centers children horizontally */
+  text-align: center;      /* ← Centers inline text */
+  max-width: 1200px;
+  margin: 0 auto;          /* ← Centers the whole block if narrower than viewport */
+">
+<style>
+  * { color: #800000 !important; font-family: Arial; font-size: large; }
+  h1 { font-weight: bold; font-size: xx-large;}
+  h2,h3,h4,h5,h6 { font-weight: bold; font-size: x-large;}
+  .gold, a.button, .gold-link { color: gold !important; }
+  @keyframes fadeIn { from {opacity:0} to {opacity:1} }
+  .team-member {
+    padding: 15px 20px;
+    margin: 10px 0;
+    max-width: 600px;
+    border-radius: 8px;
+    background-color: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(128, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .team-member:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+</style>
+  <h1>Meet our HTS Core Committee</h1>
+  <div class="team-member">
+    <p style="margin: 5px 0; font-weight: 500;">Mr. Mahesh Babu & Mrs. Latha Mahesh</p>
+  </div>
+  <div class="team-member">
+    <p style="margin: 5px 0; font-weight: 500;">Mr. Vinoth Philomin & Mrs. Maria Vinoth</p>
+  </div>
+  <div class="team-member">
+    <p style="margin: 5px 0; font-weight: 500;">Mr. Francis Arokiaraj & Mrs. Vimala Francis</p>
+  </div>
+  <div class="team-member">
+    <p style="margin: 5px 0; font-weight: 500;">Mr. Santhosh Kumar & Mrs. Srividhya Santhosh</p>
+  </div>
+</section>

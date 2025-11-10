@@ -1,156 +1,285 @@
 <section id="gallery" style="
-  padding: 20px;
+  padding: 20px 30px;
   animation: fadeIn 1s ease-in;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 ">
-  <h1 style="color: #800000;">Gallery</h1>
-  <h2 style="color: #800000; margin: 40px 0 20px 0;">Our 2025 Summer Event Pictures</h2>
+<style>
+  * { color: #800000 !important; font-family: Arial; }
+  @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+  @keyframes slideUp { from {transform: translateY(50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
   
-  <div style="
-    width: 100%;
-    max-width: 900px;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    margin-bottom: 30px;
-    animation: slideUp 0.6s ease-out;
-    transition: transform 0.3s;
-  " onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-    <img 
-      src="../media/photos/HTS_Summer_GroupPic.JPG" 
-      alt="Featured Event Photo"
-      style="
-        width: 100%;
-        height: auto;
-        display: block;
-        object-fit: cover;
-      "
-      onerror="this.src='https://via.placeholder.com/900x500/800000/gold?text=Gallery+Photo'"
-    />
-  </div>
-
-  <!-- NEW: Google Drive Preview Section -->
-  <p style="color: #800000; max-width: 600px; margin-bottom: 20px; line-height: 1.6;">
-    Explore highlights from our community gatherings. Click below to view the full album!
-  </p>
-
-  <!-- Preview Grid (Replace FILE_ID_1, etc., with your actual Drive file IDs) -->
-  <div class="drive-gallery-grid" style="
+  .gallery-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-    width: 100%;
-    margin-bottom: 30px;
-    animation: slideUp 0.5s ease-out;
-  ">
-    <!-- Image 1 -->
-    <div class="gallery-preview" style="
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
-    ">
-      <img src="https://lh3.googleusercontent.com/pw/AP1GczOLcK5DG_b3UKhOKrkqStkkvGSABP1g31B9Sncid2M7t1DvLjgzK8wLo-nytOY_94hMV6ZtOAFvyXOsVlTKNkcF0O66vBubFchtli-VFgi9619tRZtnZI2TZ6TBAVyFGm7C5BUD6M5jxLKZ5Sla_2EcIw=w2471-h1647-s-no-gm?authuser=0" 
-           alt="Event Photo 1"
-           style="
-             width: 100%;
-             height: 200px;
-             object-fit: cover;
-             display: block;
-           "
-           onerror="this.src='https://via.placeholder.com/200x200?text=No+Image'"
-      />
+    grid-template-columns: 250px 1fr;
+    gap: 30px;
+    align-items: start;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .events-menu {
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    position: sticky;
+    top: 110px;
+    max-height: calc(100vh - 130px);
+    overflow-y: auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  .events-menu h3 {
+    color: #800000;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(128, 0, 0, 0.2);
+  }
+  
+  .event-menu-item {
+    display: block;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    color: #800000;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border-left: 3px solid transparent;
+  }
+  
+  .event-menu-item:hover,
+  .event-menu-item.active {
+    background: rgba(128, 0, 0, 0.1);
+    border-left-color: #800000;
+    transform: translateX(5px);
+  }
+  
+  .gallery-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .events-menu::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .events-menu::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+  }
+  
+  .events-menu::-webkit-scrollbar-thumb {
+    background: rgba(128, 0, 0, 0.3);
+    border-radius: 3px;
+  }
+  
+  .events-menu::-webkit-scrollbar-thumb:hover {
+    background: rgba(128, 0, 0, 0.5);
+  }
+  
+  @media (max-width: 1024px) {
+    .gallery-container {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .events-menu {
+      position: relative;
+      top: 0;
+      max-height: none;
+      order: -1;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    #gallery {
+      padding: 15px;
+    }
+  }
+</style>
+
+  <div class="gallery-container">
+    <!-- Left Sidebar - Events Menu -->
+    <div class="events-menu">
+      <h3>Past Events</h3>
+      <a href="#" class="event-menu-item active" onclick="showEvent(event, 'event-2025-summer')">2025 Summer Event</a>
+      <a href="#" class="event-menu-item" onclick="showEvent(event, 'event-2024-diwali')">2024 Diwali Event</a>
+      <a href="#" class="event-menu-item" onclick="showEvent(event, 'event-2024-chitrai')">2024 Chitrai Tiruvizha</a>
+      <a href="#" class="event-menu-item" onclick="showEvent(event, 'event-2023-diwali')">2023 Diwali Event</a>
+      <a href="#" class="event-menu-item" onclick="showEvent(event, 'event-2023-summer')">2023 Summer Event</a>
     </div>
 
-    <!-- Image 2 -->
-    <div class="gallery-preview" style="
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
-    ">
-      <img src="https://lh3.googleusercontent.com/pw/AP1GczOi78Efh3owmAN7NmR1YWx3mCI79n7OHcPGTGzEysfidp80DSoBePb59UivrD7OMxmCFMBvyfMvdCtk2Jftm9_OB8Cm_vZLxM9jhr75vkeyyNtFtZwQLbTfOzn0QCmJI0u8xf9TGmeIdViC4GoCqvPb2w=w2471-h1647-s-no-gm?authuser=0" 
-           alt="Event Photo 2"
-           style="
-             width: 100%;
-             height: 200px;
-             object-fit: cover;
-             display: block;
-           "
-           onerror="this.src='https://via.placeholder.com/200x200?text=No+Image'"
-      />
-    </div>
+    <!-- Main Gallery Content -->
+    <div class="gallery-content">
+      <h1 style="color: #800000; margin-bottom: 30px;">Gallery</h1>
+      
+      <!-- Event Content - 2025 Summer (Default/Active) -->
+      <div id="event-2025-summer" class="event-content" style="display: block; width: 100%;">
+        <h2 style="color: #800000; margin: 20px 0;">Our 2025 Summer Event Pictures</h2>
+        
+        <div style="
+          width: 100%;
+          max-width: 900px;
+          border-radius: 12px;
+          overflow: hidden;
+          box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+          margin-bottom: 30px;
+          animation: slideUp 0.6s ease-out;
+          transition: transform 0.3s;
+        " onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+          <img 
+            src="../media/photos/HTS_Summer_GroupPic.JPG" 
+            alt="Featured Event Photo"
+            style="
+              width: 100%;
+              height: auto;
+              display: block;
+              object-fit: cover;
+            "
+            onerror="this.src='https://via.placeholder.com/900x500/800000/gold?text=Gallery+Photo'"
+          />
+        </div>
 
-    <!-- Image 3 -->
-    <div class="gallery-preview" style="
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
-    ">
-      <img src="https://lh3.googleusercontent.com/pw/AP1GczOTb2X_SxMVNVP9VB0_fQmvYAp8u-NEL9fGEINzk8lu0YB2NFUu0GT4Zdv7Znpo-AMyO69wKVwssqEWYC08bTTOEjCg_Dce7ht73q547wq88MK30laWUOgLqcW5rgMWbcZIHMq1v07MICWOAHEBSzhHyQ=w2471-h1647-s-no-gm?authuser=0" 
-           alt="Event Photo 3"
-           style="
-             width: 100%;
-             height: 200px;
-             object-fit: cover;
-             display: block;
-           "
-           onerror="this.src='https://via.placeholder.com/200x200?text=No+Image'"
-      />
-    </div>
+        <p style="color: #800000; max-width: 600px; margin-bottom: 20px; line-height: 1.6;">
+          Explore highlights from our community gatherings. Click below to view the full album!
+        </p>
 
-    <!-- Image 4 (Add more up to 6-8 if needed) -->
-    <div class="gallery-preview" style="
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
-    ">
-      <img src="https://lh3.googleusercontent.com/pw/AP1GczMOhFyO2u9lM5yaxAFIyWK4ZjW7LLEBnn7zioGjvDfK0-IawmJkGN4345YrwDV7zR0jVwT2zrBzlej5ClN2aOixASNlMoYluWioqbuUJUYxBdCM5mOC701-Zz8doC_xgaxMnihoYafQFy0QdSsI4lgQ9A=w2471-h1647-s-no-gm?authuser=0" 
-           alt="Event Photo 4"
+        <div class="drive-gallery-grid" style="
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 15px;
+          width: 100%;
+          max-width: 900px;
+          margin-bottom: 30px;
+          animation: slideUp 0.5s ease-out;
+        ">
+          <div class="gallery-preview" style="
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+          ">
+            <img src="https://lh3.googleusercontent.com/pw/AP1GczOLcK5DG_b3UKhOKrkqStkkvGSABP1g31B9Sncid2M7t1DvLjgzK8wLo-nytOY_94hMV6ZtOAFvyXOsVlTKNkcF0O66vBubFchtli-VFgi9619tRZtnZI2TZ6TBAVyFGm7C5BUD6M5jxLKZ5Sla_2EcIw=w2471-h1647-s-no-gm?authuser=0" 
+                 alt="Event Photo 1"
+                 style="
+                   width: 100%;
+                   height: 200px;
+                   object-fit: cover;
+                   display: block;
+                 "
+                 onerror="this.src='https://via.placeholder.com/200x200?text=No+Image'"
+            />
+          </div>
+          <div class="gallery-preview" style="
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+          ">
+            <img src="https://lh3.googleusercontent.com/pw/AP1GczOi78Efh3owmAN7NmR1YWx3mCI79n7OHcPGTGzEysfidp80DSoBePb59UivrD7OMxmCFMBvyfMvdCtk2Jftm9_OB8Cm_vZLxM9jhr75vkeyyNtFtZwQLbTfOzn0QCmJI0u8xf9TGmeIdViC4GoCqvPb2w=w2471-h1647-s-no-gm?authuser=0" 
+                 alt="Event Photo 2"
+                 style="
+                   width: 100%;
+                   height: 200px;
+                   object-fit: cover;
+                   display: block;
+                 "
+                 onerror="this.src='https://via.placeholder.com/200x200?text=No+Image'"
+            />
+          </div>
+          <div class="gallery-preview" style="
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+          ">
+            <img src="https://lh3.googleusercontent.com/pw/AP1GczOTb2X_SxMVNVP9VB0_fQmvYAp8u-NEL9fGEINzk8lu0YB2NFUu0GT4Zdv7Znpo-AMyO69wKVwssqEWYC08bTTOEjCg_Dce7ht73q547wq88MK30laWUOgLqcW5rgMWbcZIHMq1v07MICWOAHEBSzhHyQ=w2471-h1647-s-no-gm?authuser=0" 
+                 alt="Event Photo 3"
+                 style="
+                   width: 100%;
+                   height: 200px;
+                   object-fit: cover;
+                   display: block;
+                 "
+                 onerror="this.src='https://via.placeholder.com/200x200?text=No+Image'"
+            />
+          </div>
+          <div class="gallery-preview" style="
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+          ">
+            <img src="https://lh3.googleusercontent.com/pw/AP1GczMOhFyO2u9lM5yaxAFIyWK4ZjW7LLEBnn7zioGjvDfK0-IawmJkGN4345YrwDV7zR0jVwT2zrBzlej5ClN2aOixASNlMoYluWioqbuUJUYxBdCM5mOC701-Zz8doC_xgaxMnihoYafQFy0QdSsI4lgQ9A=w2471-h1647-s-no-gm?authuser=0" 
+                 alt="Event Photo 4"
+                 style="
+                   width: 100%;
+                   height: 200px;
+                   object-fit: cover;
+                   display: block;
+                 "
+                 onerror="this.src='https://via.placeholder.com/200x200?text=No+Image'"
+            />
+          </div>
+        </div>
+
+        <a href="https://photos.app.goo.gl/bQZGGBg4iNEj5NtJ6" 
+           target="_blank"
            style="
-             width: 100%;
-             height: 200px;
-             object-fit: cover;
-             display: block;
+             display: inline-block;
+             padding: 12px 24px;
+             background: #800000;
+             color: gold;
+             text-decoration: none;
+             font-weight: bold;
+             border-radius: 4px;
+             transition: background 0.3s;
+             margin-top: 10px;
+             margin-bottom: 20px;
            "
-           onerror="this.src='https://via.placeholder.com/200x200?text=No+Image'"
-      />
+           onmouseover="this.style.background='#a00000'"
+           onmouseout="this.style.background='#800000'"
+        >
+          View Full Album
+        </a>
+      </div>
+
+      <!-- Event Content - 2024 Diwali -->
+      <div id="event-2024-diwali" class="event-content" style="display: none; width: 100%;">
+        <h2 style="color: #800000; margin: 20px 0;">2024 Diwali Event</h2>
+        <p style="color: #800000; line-height: 1.6; margin-bottom: 20px;">Photos from our 2024 Diwali celebration will be displayed here.</p>
+        <!-- Add photos/content for 2024 Diwali event -->
+      </div>
+
+      <!-- Event Content - 2024 Chitrai Tiruvizha -->
+      <div id="event-2024-chitrai" class="event-content" style="display: none; width: 100%;">
+        <h2 style="color: #800000; margin: 20px 0;">2024 Chitrai Tiruvizha</h2>
+        <p style="color: #800000; line-height: 1.6; margin-bottom: 20px;">Photos from our 2024 Chitrai Tiruvizha celebration will be displayed here.</p>
+        <!-- Add photos/content for 2024 Chitrai Tiruvizha event -->
+      </div>
+
+      <!-- Event Content - 2023 Diwali -->
+      <div id="event-2023-diwali" class="event-content" style="display: none; width: 100%;">
+        <h2 style="color: #800000; margin: 20px 0;">2023 Diwali Event</h2>
+        <p style="color: #800000; line-height: 1.6; margin-bottom: 20px;">Photos from our 2023 Diwali celebration will be displayed here.</p>
+        <!-- Add photos/content for 2023 Diwali event -->
+      </div>
+
+      <!-- Event Content - 2023 Summer -->
+      <div id="event-2023-summer" class="event-content" style="display: none; width: 100%;">
+        <h2 style="color: #800000; margin: 20px 0;">2023 Summer Event</h2>
+        <p style="color: #800000; line-height: 1.6; margin-bottom: 20px;">Photos from our 2023 Summer event will be displayed here.</p>
+        <!-- Add photos/content for 2023 Summer event -->
+      </div>
     </div>
   </div>
-
-  <!-- Link to Full Gallery -->
-  <a href="https://photos.app.goo.gl/bQZGGBg4iNEj5NtJ6" 
-     target="_blank"
-     style="
-       display: inline-block;
-       padding: 12px 24px;
-       background: #800000;
-       color: gold;
-       text-decoration: none;
-       font-weight: bold;
-       border-radius: 4px;
-       transition: background 0.3s;
-       margin-top: 10px;
-       margin-bottom: 20px;
-     "
-     onmouseover="this.style.background='#a00000'"
-     onmouseout="this.style.background='#800000'"
-  >
-    View Full Album
-  </a>
 </section>
 
 <style>
-  @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
-  @keyframes slideUp { from {transform: translateY(50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
-
   .gallery-preview:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
@@ -166,10 +295,32 @@
 </style>
 
 <script>
+  function showEvent(event, eventId) {
+    event.preventDefault();
+    
+    // Hide all event contents
+    document.querySelectorAll('.event-content').forEach(content => {
+      content.style.display = 'none';
+    });
+    
+    // Remove active class from all menu items
+    document.querySelectorAll('.event-menu-item').forEach(item => {
+      item.classList.remove('active');
+    });
+    
+    // Show selected event content
+    document.getElementById(eventId).style.display = 'block';
+    
+    // Add active class to clicked menu item
+    event.target.classList.add('active');
+  }
+  
   // Optional: Add click to enlarge preview images (lightbox simulation)
-  document.querySelectorAll('.gallery-preview img').forEach(img => {
-    img.addEventListener('click', function() {
-      window.open(this.src, '_blank', 'width=800,height=600');
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.gallery-preview img').forEach(img => {
+      img.addEventListener('click', function() {
+        window.open(this.src, '_blank', 'width=800,height=600');
+      });
     });
   });
 </script>

@@ -1,18 +1,241 @@
 <section id="events" style="
-  padding: 20px;
+  padding: 20px 30px;
   animation: fadeIn 1s ease-in;
-  display: flex;
-  flex-direction: column;
-  align-items: center;     /* ← Centers children horizontally */
-  text-align: center;      /* ← Centers inline text */
-  max-width: 1200px;
-  margin: 0 auto;          /* ← Centers the whole block if narrower than viewport */
+  width: 100%;
+  box-sizing: border-box;
 ">
 <style>
-  * { color: #800000 !important; }
-  h1,h2,h3,h4,h5,h6 { font-weight: bold; }
-  .gold, a.button, .gold-link { color: gold !important; }
+  * { color: #800000 !important; font-family: Arial; }
+  @keyframes fadeIn { from {opacity:0} to {opacity:1} }
+  @keyframes slideUp { from {transform:translateY(50px); opacity:0} to {transform:translateY(0); opacity:1} }
+  
+  .events-page-container {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 30px;
+    align-items: start;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .events-nav-menu {
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    position: sticky;
+    top: 110px;
+    max-height: calc(100vh - 130px);
+    overflow-y: auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  .events-nav-menu h3 {
+    color: #800000;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(128, 0, 0, 0.2);
+  }
+  
+  .event-nav-item {
+    display: block;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    color: #800000;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border-left: 3px solid transparent;
+    font-size: 0.9rem;
+  }
+  
+  .event-nav-item:hover,
+  .event-nav-item.active {
+    background: rgba(128, 0, 0, 0.1);
+    border-left-color: #800000;
+    transform: translateX(5px);
+  }
+  
+  .events-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .event-section {
+    width: 100%;
+    max-width: 900px;
+  }
+  
+  .event-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+  }
+  
+  .event-poster {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .event-poster:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0,0,0,.15);
+  }
+  
+  .events-nav-menu::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .events-nav-menu::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+  }
+  
+  .events-nav-menu::-webkit-scrollbar-thumb {
+    background: rgba(128, 0, 0, 0.3);
+    border-radius: 3px;
+  }
+  
+  .events-nav-menu::-webkit-scrollbar-thumb:hover {
+    background: rgba(128, 0, 0, 0.5);
+  }
+  
+  @media (max-width: 1024px) {
+    .events-page-container {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .events-nav-menu {
+      position: relative;
+      top: 0;
+      max-height: none;
+      order: -1;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    #events {
+      padding: 15px;
+    }
+  }
 </style>
-  <h1>Upcoming Events</h1>
-  <img src="../images/Diwali_poster.jpg" width="50%" alt="Diwali Event Poster" style="border-radius:8px; box-shadow:0 4px 8px rgba(0,0,0,.1);">
+
+  <div class="events-page-container">
+    <!-- Left Sidebar - Events Navigation Menu -->
+    <div class="events-nav-menu">
+      <h3>Events</h3>
+      <a href="#" class="event-nav-item active" onclick="showEventSection(event, 'event-upcoming')">Upcoming Events</a>
+      <a href="#" class="event-nav-item" onclick="showEventSection(event, 'event-diwali')">Diwali Event</a>
+      <!-- Add more event categories here -->
+      <a href="#" class="event-nav-item" onclick="showEventSection(event, 'event-past')">Past Events</a>
+    </div>
+
+    <!-- Main Events Content -->
+    <div class="events-content">
+      <h1 style="font-weight: bold; font-size: xx-large; margin-bottom: 30px; color: #800000;">Events</h1>
+      
+      <!-- Event Section - Upcoming Events (Default/Active) -->
+      <div id="event-upcoming" class="event-section" style="display: block;">
+        <h2 style="color: #800000; margin: 20px 0; font-size: x-large;">Upcoming Cultural Events</h2>
+        <p style="color: #800000; line-height: 1.6; margin-bottom: 25px; max-width: 700px;">
+          A sneak peek into our plans for the next year.
+        </p>
+        <div style="
+          padding: 25px;
+          background: #f9f9f9;
+          border-radius: 12px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+          margin: 20px 0;
+          max-width: 600px;
+        ">
+          <h3 style="color: #800000; font-size: 1.3rem; margin-bottom: 15px;">Kodai Kondattam 2026</h3>
+          <p style="color: #800000; line-height: 1.6;">
+            Join us for an exciting cultural celebration! More details coming soon.
+          </p>
+        </div>
+      </div>
+
+      <!-- Event Section - Diwali Event -->
+      <div id="event-diwali" class="event-section" style="display: none;">
+        <h2 style="color: #800000; margin: 20px 0; font-size: x-large;">Diwali Event</h2>
+        <div class="event-container">
+          <img src="../images/Diwali_poster.jpg" alt="Diwali Event Poster" class="event-poster">
+        </div>
+      </div>
+
+      <!-- Event Section - Past Events -->
+      <div id="event-past" class="event-section" style="display: none;">
+        <h2 style="color: #800000; margin: 20px 0; font-size: x-large;">Past Events</h2>
+        <p style="color: #800000; line-height: 1.6; margin-bottom: 20px; max-width: 700px;">
+          Browse through our past events and celebrations. Visit the Gallery page to see photos from these events.
+        </p>
+        <div style="
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 20px;
+          width: 100%;
+          max-width: 800px;
+          margin-top: 20px;
+        ">
+          <div style="
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+          ">
+            <h3 style="color: #800000; margin-bottom: 10px;">2025 Summer Event</h3>
+            <p style="color: #800000; font-size: 0.9rem; line-height: 1.5;">Community gathering and cultural celebration</p>
+          </div>
+          <div style="
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+          ">
+            <h3 style="color: #800000; margin-bottom: 10px;">2024 Diwali</h3>
+            <p style="color: #800000; font-size: 0.9rem; line-height: 1.5;">Festival of lights celebration</p>
+          </div>
+          <div style="
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+          ">
+            <h3 style="color: #800000; margin-bottom: 10px;">2024 Chitrai Tiruvizha</h3>
+            <p style="color: #800000; font-size: 0.9rem; line-height: 1.5;">Tamil New Year celebration</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+
+<script>
+  function showEventSection(event, sectionId) {
+    event.preventDefault();
+    
+    // Hide all event sections
+    document.querySelectorAll('.event-section').forEach(section => {
+      section.style.display = 'none';
+    });
+    
+    // Remove active class from all menu items
+    document.querySelectorAll('.event-nav-item').forEach(item => {
+      item.classList.remove('active');
+    });
+    
+    // Show selected event section
+    document.getElementById(sectionId).style.display = 'block';
+    
+    // Add active class to clicked menu item
+    event.target.classList.add('active');
+  }
+</script>

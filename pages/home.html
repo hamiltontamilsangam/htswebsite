@@ -1,46 +1,614 @@
 <section id="home" style="
-  padding: 20px;
+  padding: 20px 30px;
   animation: fadeIn 1s ease-in;
-  display: flex;
-  flex-direction: column;
-  align-items: center;     /* ← Centers children horizontally */
-  text-align: center;      /* ← Centers inline text */
-  max-width: 1200px;
-  margin: 0 auto;          /* ← Centers the whole block if narrower than viewport */
+  width: 100%;
+  box-sizing: border-box;
 ">
 <style>
   * { color: #800000 !important; font-family: Arial; font-size: large; }
   h1 { font-weight: bold; font-size: xx-large;}
   h2,h3,h4,h5,h6 { font-weight: bold; font-size: x-large;}
   .gold, a.button, .gold-link { color: gold !important; }
-</style>
-  <h1>Welcome to Hamilton Tamil Sangam!</h1>
-  <br>
-  <p style="max-width: 800px; line-height: 1.6;">
-    Established in May 2021, our journey began with a small gathering of Tamil-speaking families enjoying outdoor potlucks. As our community flourished, we embraced the growing number of families by organizing get-togethers in cozy small halls. Eventually, our events transitioned to larger community halls to accommodate our vibrant and expanding community. Join us as we celebrate our culture, foster connections, and create lasting memories together.
-  </p>
-  <div style="
-    width: 100%;
-    max-width: 900px;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    margin-bottom: 30px;
-    animation: slideUp 0.6s ease-out;
-    transition: transform 0.3s;
-  " onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-    <img 
-      src="../media/photos/diwali_2024.jpg" 
-      alt="Featured Event Photo"
-      style=" 
-        width: 100%;
-        height: auto;
-        display: block;
-        object-fit: cover;
-      "
-      onerror="this.src='https://via.placeholder.com/900x500/800000/gold?text=Gallery+Photo'"
-    />
-  </div>
-<style>
   @keyframes fadeIn { from {opacity:0} to {opacity:1} }
+  @keyframes slideUp { from {transform:translateY(50px); opacity:0} to {transform:translateY(0); opacity:1} }
+  
+  .home-container {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 40px;
+    align-items: start;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    max-width: 900px;
+  }
+  
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    position: sticky;
+    top: 110px;
+    max-height: calc(100vh - 130px);
+    overflow-y: auto;
+    padding-right: 10px;
+  }
+  
+  .sidebar::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .sidebar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+  }
+  
+  .sidebar::-webkit-scrollbar-thumb {
+    background: rgba(128, 0, 0, 0.3);
+    border-radius: 3px;
+  }
+  
+  .sidebar::-webkit-scrollbar-thumb:hover {
+    background: rgba(128, 0, 0, 0.5);
+  }
+  
+  @media (max-width: 1024px) {
+    .home-container {
+      grid-template-columns: 1fr;
+      gap: 30px;
+      max-width: 100%;
+    }
+    .sidebar {
+      position: relative;
+      top: 0;
+      max-height: none;
+      order: -1;
+      padding-right: 0;
+    }
+    .main-content {
+      text-align: center;
+      max-width: 100%;
+    }
+    #home {
+      padding: 20px;
+    }
+  }
+  
+  @media (min-width: 1400px) {
+    .home-container {
+      grid-template-columns: 1fr 420px;
+      gap: 50px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    #home {
+      padding: 15px;
+    }
+    .home-container {
+      gap: 25px;
+    }
+  }
 </style>
+
+  <div class="home-container">
+    <!-- Main Content Area -->
+    <div class="main-content">
+      <h1 style="text-align: center; margin-bottom: 20px;">Welcome to Hamilton Tamil Sangam!</h1>
+      <p style="line-height: 1.6; margin-bottom: 25px; text-align: center;">
+        Established in May 2021, our journey began with a small gathering of Tamil-speaking families enjoying outdoor potlucks. As our community flourished, we embraced the growing number of families by organizing get-togethers in cozy small halls. Eventually, our events transitioned to larger community halls to accommodate our vibrant and expanding community. Join us as we celebrate our culture, foster connections, and create lasting memories together.
+      </p>
+      <!-- Featured Image -->
+      <div style="
+        width: 100%;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        animation: slideUp 0.6s ease-out;
+        transition: transform 0.3s;
+        margin-bottom: 25px;
+      " onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+        <img 
+          src="../media/photos/diwali_2024.jpg" 
+          alt="Featured Event Photo"
+          style=" 
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+          "
+          onerror="this.src='https://via.placeholder.com/900x500/800000/gold?text=Gallery+Photo'"
+        />
+      </div>
+    
+      <h2 style="margin-top: 30px; margin-bottom: 15px;">About Us</h2>
+      <p style="line-height: 1.6; margin-bottom: 15px;">
+        Hamilton Tamil Sangam (HTS) began as an intimate outdoor gathering of Tamil-speaking families. As our community grew, we expanded from small halls to larger community venues to accommodate our flourishing membership.
+      </p>
+      <p style="line-height: 1.6; margin-bottom: 15px;">
+        HTS serves as a vital connection point for the Tamil community in the Hamilton area, Ontario. We create opportunities for families to meet, children to interact, and members to share experiences, fostering a strong sense of cultural unity and understanding.
+      </p>
+      <p style="line-height: 1.6; margin-bottom: 15px;">
+        In 2023, HTS achieved an important milestone by registering as a Non-Profit organization. Our mission is to actively promote, preserve, and celebrate the rich cultural and linguistic heritage of Tamil Nadu and its people.
+      </p>
+      <p style="line-height: 1.6; margin-bottom: 15px;">
+        Operating independently of any religious or political affiliations, HTS is dedicated solely to enriching the social and cultural life of Hamilton's Tamil community, guided by our motto:
+      </p>
+      <h3 style="text-align: center; margin-top: 25px; margin-bottom: 40px;">"தமிழால் இணைவோம்! அறிவால் உயர்வோம்!"</h3>
+    </div>
+
+    <!-- Sidebar with Highlight, Image and Sponsors -->
+    <div class="sidebar">
+      <!-- Highlight/Breaking News Section -->
+      <div class="highlight-section" style="
+        background: linear-gradient(135deg, #800000 0%, #a00000 100%);
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        margin-bottom: 25px;
+        animation: slideUp 0.6s ease-out;
+        position: relative;
+        z-index: 1;
+      ">
+        <div style="
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 12px;
+          position: relative;
+          z-index: 2;
+        ">
+          <span style="
+            background: gold;
+            color: #800000;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+          ">Upcoming Event</span>
+        </div>
+
+        <p style="
+          color: gold !important;
+          font-size: 0.95rem;
+          line-height: 1.5;
+          margin-bottom: 15px;
+          position: relative;
+          z-index: 2;
+        ">Diwali Celebration 2025 - Join us for an exciting cultural celebration! </p>
+        <a href="pages/events.html" onclick="
+          event.preventDefault();
+          if(window.parent && window.parent.document) {
+            const iframe = window.parent.document.getElementById('content-frame');
+            if(iframe) {
+              iframe.src = 'pages/events.html';
+            }
+          }
+        " style="
+          display: inline-block;
+          padding: 8px 16px;
+          background: gold;
+          color: #800000;
+          text-decoration: none;
+          font-weight: bold;
+          border-radius: 4px;
+          font-size: 0.85rem;
+          transition: all 0.3s ease;
+          position: relative;
+          z-index: 2;
+        " onmouseover="this.style.background='#ffd700'; this.style.transform='scale(1.05)'" onmouseout="this.style.background='gold'; this.style.transform='scale(1)'">
+          Learn More →
+        </a>
+      </div>
+
+
+      <!-- Sponsors Section in Sidebar -->
+      <!-- 
+        To add sponsors:
+        1. Replace the placeholder images with actual sponsor logo images
+        2. Update the alt text with sponsor names
+        3. Update the href="#" with sponsor website URLs (or remove <a> tag if no website)
+        4. Add/remove sponsor tiles as needed by copying the sponsor tile structure
+        5. Place sponsor logo images in the images/ directory or update the src path
+        6. Platinum sponsors: Maximum visibility, larger size, full color (1 tile only)
+        7. Gold sponsors: Medium visibility, medium size, slight grayscale
+        8. Silver sponsors: Subtle visibility, smaller size, more grayscale
+      -->
+      <div class="sponsors-section sidebar-sponsors" style="
+        padding-top: 20px;
+        border-top: 1px solid rgba(128, 0, 0, 0.2);
+        width: 100%;
+      ">
+        <!-- Platinum Sponsors - Maximum Visibility (Single Tile) -->
+        <div class="sponsor-tier platinum-tier" style="margin-bottom: 25px;">
+          <h4 style="
+            font-size: 0.95rem !important;
+            font-weight: 600 !important;
+            color: #800000;
+            margin-bottom: 15px;
+            opacity: 1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+          ">Our Sponsors</h4>
+          <div class="sponsors-grid platinum-grid sidebar-grid" style="
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+          ">
+            <!-- Platinum Sponsor - Single Tile -->
+            <a href="#" target="_blank" class="sponsor-link" style="text-decoration: none; color: inherit;">
+              <div class="sponsor-tile platinum-tile sidebar-tile" style="
+                background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+                border: 2px solid rgba(192, 192, 192, 0.4);
+                border-radius: 10px;
+                padding: 25px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 120px;
+                transition: all 0.3s ease;
+                cursor: pointer;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+              ">
+                <img 
+                  src="../images/HTS-Logo.jpg" 
+                  alt="Platinum Sponsor Name" 
+                  class="sponsor-logo platinum-logo"
+                  style="
+                    max-width: 100%;
+                    max-height: 90px;
+                    width: auto;
+                    height: auto;
+                    object-fit: contain;
+                    filter: grayscale(0%) opacity(1);
+                    transition: all 0.3s ease;
+                  "
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+                >
+                <span style="display: none; color: #800000; font-size: 0.9rem; opacity: 0.8;">Platinum Sponsor Name</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Gold Sponsors - Medium Visibility -->
+        <div class="sponsor-tier gold-tier" style="margin-bottom: 20px;">
+
+          <div class="sponsors-grid gold-grid sidebar-grid" style="
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+          ">
+            <!-- Gold Sponsor 1 -->
+            <a href="#" target="_blank" class="sponsor-link" style="text-decoration: none; color: inherit;">
+              <div class="sponsor-tile gold-tile sidebar-tile" style="
+                background: #f9f9f9;
+                border: 1.5px solid rgba(255, 215, 0, 0.3);
+                border-radius: 8px;
+                padding: 15px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 80px;
+                transition: all 0.3s ease;
+                cursor: pointer;
+              ">
+                <img 
+                  src="../images/HTS-Logo.jpg" 
+                  alt="Gold Sponsor Name" 
+                  class="sponsor-logo gold-logo"
+                  style="
+                    max-width: 100%;
+                    max-height: 60px;
+                    width: auto;
+                    height: auto;
+                    object-fit: contain;
+                    filter: grayscale(30%) opacity(0.85);
+                    transition: all 0.3s ease;
+                  "
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+                >
+                <span style="display: none; color: #800000; font-size: 0.85rem; opacity: 0.75;">Gold Sponsor Name</span>
+              </div>
+            </a>
+
+            <!-- Gold Sponsor 2 - Add more as needed -->
+            <a href="#" target="_blank" class="sponsor-link" style="text-decoration: none; color: inherit;">
+              <div class="sponsor-tile gold-tile sidebar-tile" style="
+                background: #f9f9f9;
+                border: 1.5px solid rgba(255, 215, 0, 0.3);
+                border-radius: 8px;
+                padding: 15px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 80px;
+                transition: all 0.3s ease;
+                cursor: pointer;
+              ">
+                <img 
+                  src="../images/HTS-Logo.jpg" 
+                  alt="Gold Sponsor Name" 
+                  class="sponsor-logo gold-logo"
+                  style="
+                    max-width: 100%;
+                    max-height: 60px;
+                    width: auto;
+                    height: auto;
+                    object-fit: contain;
+                    filter: grayscale(30%) opacity(0.85);
+                    transition: all 0.3s ease;
+                  "
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+                >
+                <span style="display: none; color: #800000; font-size: 0.85rem; opacity: 0.75;">Gold Sponsor Name</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Silver Sponsors - Subtle Visibility -->
+        <div class="sponsor-tier silver-tier">
+
+          <div class="sponsors-grid silver-grid sidebar-grid" style="
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            width: 100%;
+          ">
+            <!-- Silver Sponsor 1 -->
+            <a href="#" target="_blank" class="sponsor-link" style="text-decoration: none; color: inherit;">
+              <div class="sponsor-tile silver-tile sidebar-tile" style="
+                background: #fafafa;
+                border: 1px solid rgba(128, 0, 0, 0.15);
+                border-radius: 6px;
+                padding: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 70px;
+                transition: all 0.3s ease;
+                cursor: pointer;
+              ">
+                <img 
+                  src="../images/HTS-Logo.jpg" 
+                  alt="Silver Sponsor Name" 
+                  class="sponsor-logo silver-logo"
+                  style="
+                    max-width: 100%;
+                    max-height: 50px;
+                    width: auto;
+                    height: auto;
+                    object-fit: contain;
+                    filter: grayscale(60%) opacity(0.7);
+                    transition: all 0.3s ease;
+                  "
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+                >
+                <span style="display: none; color: #800000; font-size: 0.75rem; opacity: 0.7;">Silver Sponsor Name</span>
+              </div>
+            </a>
+
+            <!-- Silver Sponsor 2 -->
+            <a href="#" target="_blank" class="sponsor-link" style="text-decoration: none; color: inherit;">
+              <div class="sponsor-tile silver-tile sidebar-tile" style="
+                background: #fafafa;
+                border: 1px solid rgba(128, 0, 0, 0.15);
+                border-radius: 6px;
+                padding: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 70px;
+                transition: all 0.3s ease;
+                cursor: pointer;
+              ">
+                <img 
+                  src="../images/HTS-Logo.jpg" 
+                  alt="Silver Sponsor Name" 
+                  class="sponsor-logo silver-logo"
+                  style="
+                    max-width: 100%;
+                    max-height: 50px;
+                    width: auto;
+                    height: auto;
+                    object-fit: contain;
+                    filter: grayscale(60%) opacity(0.7);
+                    transition: all 0.3s ease;
+                  "
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+                >
+                <span style="display: none; color: #800000; font-size: 0.75rem; opacity: 0.7;">Silver Sponsor Name</span>
+              </div>
+            </a>
+
+            <!-- Silver Sponsor 3 -->
+            <a href="#" target="_blank" class="sponsor-link" style="text-decoration: none; color: inherit;">
+              <div class="sponsor-tile silver-tile sidebar-tile" style="
+                background: #fafafa;
+                border: 1px solid rgba(128, 0, 0, 0.15);
+                border-radius: 6px;
+                padding: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 70px;
+                transition: all 0.3s ease;
+                cursor: pointer;
+              ">
+                <img 
+                  src="../images/HTS-Logo.jpg" 
+                  alt="Silver Sponsor Name" 
+                  class="sponsor-logo silver-logo"
+                  style="
+                    max-width: 100%;
+                    max-height: 50px;
+                    width: auto;
+                    height: auto;
+                    object-fit: contain;
+                    filter: grayscale(60%) opacity(0.7);
+                    transition: all 0.3s ease;
+                  "
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+                >
+                <span style="display: none; color: #800000; font-size: 0.75rem; opacity: 0.7;">Silver Sponsor Name</span>
+              </div>
+            </a>
+
+            <!-- Silver Sponsor 4 -->
+            <a href="#" target="_blank" class="sponsor-link" style="text-decoration: none; color: inherit;">
+              <div class="sponsor-tile silver-tile sidebar-tile" style="
+                background: #fafafa;
+                border: 1px solid rgba(128, 0, 0, 0.15);
+                border-radius: 6px;
+                padding: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 70px;
+                transition: all 0.3s ease;
+                cursor: pointer;
+              ">
+                <img 
+                  src="../images/HTS-Logo.jpg" 
+                  alt="Silver Sponsor Name" 
+                  class="sponsor-logo silver-logo"
+                  style="
+                    max-width: 100%;
+                    max-height: 50px;
+                    width: auto;
+                    height: auto;
+                    object-fit: contain;
+                    filter: grayscale(60%) opacity(0.7);
+                    transition: all 0.3s ease;
+                  "
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+                >
+                <span style="display: none; color: #800000; font-size: 0.75rem; opacity: 0.7;">Silver Sponsor Name</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    /* Sponsor link styling */
+    .sponsor-link {
+      display: block;
+    }
+    
+    /* Sidebar sponsor styling */
+    .sidebar-sponsors {
+      font-size: 0.9rem;
+    }
+    
+    /* Highlight section styling */
+    .highlight-section {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .highlight-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+      animation: pulse 3s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+    
+    /* Platinum tier hover effects */
+    .platinum-tile:hover {
+      background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+      border-color: rgba(192, 192, 192, 0.6);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+    .platinum-tile:hover .platinum-logo {
+      filter: grayscale(0%) opacity(1);
+      transform: scale(1.03);
+    }
+    
+    /* Gold tier hover effects */
+    .gold-tile:hover {
+      background: #f5f5f5;
+      border-color: rgba(255, 215, 0, 0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+    .gold-tile:hover .gold-logo {
+      filter: grayscale(0%) opacity(1);
+    }
+    
+    /* Silver tier hover effects */
+    .silver-tile:hover {
+      background: #f5f5f5;
+      border-color: rgba(128, 0, 0, 0.25);
+      transform: translateY(-1px);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    .silver-tile:hover .silver-logo {
+      filter: grayscale(20%) opacity(0.9);
+    }
+    
+    /* Responsive: Move sponsors to bottom on tablet/mobile */
+    @media (max-width: 1024px) {
+      .sidebar-sponsors {
+        padding-top: 30px;
+        margin-top: 30px;
+      }
+      .platinum-grid,
+      .gold-grid {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+      .platinum-grid .sponsor-link,
+      .gold-grid .sponsor-link {
+        flex: 1 1 calc(50% - 7.5px);
+        min-width: 0;
+      }
+      .silver-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .platinum-grid,
+      .gold-grid {
+        flex-direction: column;
+      }
+      .platinum-grid .sponsor-link,
+      .gold-grid .sponsor-link {
+        flex: 1 1 100%;
+      }
+      .silver-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .sidebar-tile {
+        min-height: 90px !important;
+      }
+      .platinum-tile.sidebar-tile {
+        min-height: 120px !important;
+      }
+    }
+  </style>
