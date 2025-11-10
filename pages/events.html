@@ -77,9 +77,11 @@
   }
   
   .event-poster {
+    width: 75%;
     max-width: 100%;
-    width: 100%;
     height: auto;
+    margin: 0 auto;
+    display: block;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,.1);
     transition: transform 0.3s, box-shadow 0.3s;
@@ -133,7 +135,6 @@
     <div class="events-nav-menu">
       <h3>Events</h3>
       <a href="#" class="event-nav-item active" onclick="showEventSection(event, 'event-upcoming')">Upcoming Events</a>
-      <a href="#" class="event-nav-item" onclick="showEventSection(event, 'event-diwali')">Diwali Event</a>
       <!-- Add more event categories here -->
       <a href="#" class="event-nav-item" onclick="showEventSection(event, 'event-past')">Past Events</a>
     </div>
@@ -142,18 +143,19 @@
     <div class="events-content">
       <h1 style="font-weight: bold; font-size: xx-large; margin-bottom: 30px; color: #800000;">Events</h1>
       
-      <!-- Event Section - Upcoming Events (Default/Active) -->
+      <!-- Event Section - Upcoming Events  -->
       <div id="event-upcoming" class="event-section" style="display: block;">
         <h2 style="color: #800000; margin: 20px 0; font-size: x-large;">Upcoming Cultural Events</h2>
-        <p style="color: #800000; line-height: 1.6; margin-bottom: 25px; max-width: 700px;">
-          A sneak peek into our plans for the next year.
-        </p>
+        <h2 style="color: #800000; margin: 20px 0; font-size: x-large;">Diwali Event</h2>
+        <div class="event-container">
+          <img src="../images/Diwali_poster.jpg" alt="Diwali Event Poster" class="event-poster">
+        </div>
         <div style="
           padding: 25px;
           background: #f9f9f9;
           border-radius: 12px;
           box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-          margin: 20px 0;
+          margin: 20px auto;
           max-width: 600px;
         ">
           <h3 style="color: #800000; font-size: 1.3rem; margin-bottom: 15px;">Kodai Kondattam 2026</h3>
@@ -162,15 +164,7 @@
           </p>
         </div>
       </div>
-
-      <!-- Event Section - Diwali Event -->
-      <div id="event-diwali" class="event-section" style="display: none;">
-        <h2 style="color: #800000; margin: 20px 0; font-size: x-large;">Diwali Event</h2>
-        <div class="event-container">
-          <img src="../images/Diwali_poster.jpg" alt="Diwali Event Poster" class="event-poster">
-        </div>
-      </div>
-
+      
       <!-- Event Section - Past Events -->
       <div id="event-past" class="event-section" style="display: none;">
         <h2 style="color: #800000; margin: 20px 0; font-size: x-large;">Past Events</h2>
